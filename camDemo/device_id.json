@@ -1,0 +1,16 @@
+{
+  "productKey": "a1GJxApe9ri",
+  "deviceName": "CAM_001",
+  "productSecret":"x4mFtFlHKWL0yLf1",
+  "deviceSecret": "JATMWFOj4FbgbjjZvZtJFRWwOeuK2BFN",
+  "subDevice": [
+    {
+      "productKey": "",
+      "deviceName": ""
+    },
+    {
+      "productKey": "",
+      "deviceName": ""
+    }
+  ]
+}

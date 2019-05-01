@@ -1,0 +1,9 @@
+
+spring:
+  mvc:
+    view:
+      suffix: .html
+  thymeleaf:
+    cache: false
+server:
+  port: 8082

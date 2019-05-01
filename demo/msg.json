@@ -1,0 +1,75 @@
+{"iotId":"qAOZ5Z8GwLkwtvydOc3c000100","code":200,"requestId":"344603059","topic":"/sys/a1M0PwYMMNz/LG_001/thing/service/property/set_reply","source":"DEVICE","gmtCreate":1555642707224,"productKey":"a1M0PwYMMNz","deviceName":"LG_001"}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555642707278,"deviceName":"LG_001","items":{"LightSwitch":{"value":0,"time":1555642707285}}}, 
+{"iotId":"qAOZ5Z8GwLkwtvydOc3c000100","code":200,"requestId":"344622730","topic":"/sys/a1M0PwYMMNz/LG_001/thing/service/property/set_reply","source":"DEVICE","gmtCreate":1555643172774,"productKey":"a1M0PwYMMNz","deviceName":"LG_001"}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555643172824,"deviceName":"LG_001","items":{"LightSwitch":{"value":1,"time":1555643172828}}}, 
+{"iotId":"qAOZ5Z8GwLkwtvydOc3c000100","code":200,"requestId":"344625062","topic":"/sys/a1M0PwYMMNz/LG_001/thing/service/property/set_reply","source":"DEVICE","gmtCreate":1555643212607,"productKey":"a1M0PwYMMNz","deviceName":"LG_001"}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555643212653,"deviceName":"LG_001","items":{"LightSwitch":{"value":0,"time":1555643212660}}}, 
+{"iotId":"qAOZ5Z8GwLkwtvydOc3c000100","code":200,"requestId":"344630806","topic":"/sys/a1M0PwYMMNz/LG_001/thing/service/property/set_reply","source":"DEVICE","gmtCreate":1555643344253,"productKey":"a1M0PwYMMNz","deviceName":"LG_001"}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555643344297,"deviceName":"LG_001","items":{"LightSwitch":{"value":1,"time":1555643344302}}}, 
+
+
+{
+	设备信息：{
+		iotId/deviceId,
+		deviceType,
+		productKey,
+		deviceName,
+		ext
+	},
+	人脸信息：{
+		特征:{
+			sex,
+			age,
+			ext
+		},
+		图片的压缩码,
+		
+	},
+	curTime,
+	ext
+}
+
+code：状态码
+face.identity：人员标识 0：店员，1：会员，2：黑名单
+face.feature.sex: 性别 0：男，1：女
+face.feature.age: 年龄 具体的年龄
+curTime: 当前时间
+
+现在的业务场景是：设备抓拍人脸，进行分析，上传数据到iot平台，
+云端接受数据
+{
+	"faceId": "人脸id",
+	"perId": "比对的人员id", //TODO person id 有何做用
+	"sex":0,
+	"age":0,
+	"image": "base64 编码的数据"
+	"curTime":1555728549839
+}
+
+
+
+云端下发指令：
+{
+	"action": "设备做什么动作",
+	"url": "需要下载的ringId的地址",
+	"ringId": "铃声号",
+	"version": "版本控制号"
+}
+
+问题： 
+1. 增加缓存
+2. perId的用处
+
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555741372401,"deviceName":"LG_001","items":{"data_pic":{"value":"ww","time":1555741372408}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555741382517,"deviceName":"LG_001","items":{"LightSwitch":{"value":1,"time":1555741382523},"data_pic":{"value":"ww","time":1555741382523},"WorkMode":{"value":3,"time":1555741382523}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555743092301,"deviceName":"LG_001","items":{"data_pic":{"value":"sssss","time":1555743092308}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555743143042,"deviceName":"LG_001","items":{"data_pic":{"value":"/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAnADQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCeaD7JYmVEZUdyHUk5U9jj8M/lWdb6jcz3PkLCbh1G5gmCCo6k56Y6n0qey06ad03uyIXJTI2u2eckH7vfmk8WX66Ppcen2V8itchhcxRj5niIQrk9QDz9Q2O1dM5unT55anl5fgXjsTGhT91dWU7nxXaWkhFrbRyOOCwGF/A9T+lZMvjbUklZ7ZLaIk5O2Lk/j1/Kudu71bdA2wEN0XHFVY79Z1OAEPdcV5cq1Wet9D9EhlWWYb90opy7vX/gHv8A8LfG1vrJfT7qVIb9uRBztfAzuTPt1HXjPTp6Dqd1HZ27TORkkKg9Sf8AP6V8teFNU/sLxbpWpbWaOKcFwp52nKtj8Ca+gtX1SK/1GO0EvlmHDbGHXK5z7cH9TXbhL1XqfLZ7Tjl6/d6X29StNDaXknmvbJIem4tj+lFPEG3IR1Cg9D2or1PZwPjPrFY5TTmtTdA3MPlXEfzfLI2yQdwcniuC8eWxttfumEbLHJGjxbs8rsAzz7g13F5DaapK0enavZ7yMlY5hnH4Vzut+FL26tVEl4HmiQrExIKsOu0nPHfB/DHeuTGUvaQ93ofQcOY6OCxLVVWUk1c4a6tnuLOGWGPzNp+ZCATgH/A/pWVFayC4ZFjZlVTuJ6Dr0P6e5zW79ivo42iYyWdyoGcrlW7A+h6dvSqckGsFRHJKpxyHBGPqAP5mvHV1oz9Er06dblrQTafVWa/4BNp8kdvd23noZEgdWdVIBJByQDggele32+m3L6/LqlzIAsgj/dqc4bYuVHPrmvEbawYNHDGrPIxCgAcsT2Fe+6fbTLYW8F5NEtyiBcR9Co78nqeM16GXP3pHynGVL9zRT31/Qx9R1+8i1CaK1FtGkbbT5+csepIx25/z0BXYG9tLQLFNeJE4GdpaiuuU5X0kfHRwsmk7HjdmmoeGtSh1BLWO4ZVZZIxJtyCB39fmB6GtO58U2N5IY5bG9tyACzZQhT9Q2eox0oornnUlCKsep7OLmyvem2uZfnxIqAA4yoI6jOB7j8hVA6TZTMwS7MLdfLZC4P44GKKKUaUKyvNHTRzbGYDTDzsu26G+H7qTQvEr2yRW888hEYmkTd5QKknaD0Ygjn2ruL/X7m1gupraJWNsgM0xUEhipKDBI4JGOOme2KKK0UVSg4wJjiKmPxfPiXzNnJt4gvwEEN9OgCgM2QTI2OWOR3P6AUUUV5lj7+lhMOqaXItux//Z","time":1555743143047}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555743293368,"deviceName":"LG_001","items":{"data_pic":{"value":"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","time":1555743293373}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555749297574,"deviceName":"LG_001","items":{"perId":{"value":"比对的人员id","time":1555749297583},"image":{"value":"base64 编码的数据","time":1555749297583},"curTime":{"value":"1555728549839","time":1555749297583},"musicId":{"value":"音乐id","time":1555749297583},"sex":{"value":0,"time":1555749297583},"faceId":{"value":"人脸id","time":1555749297583},"age":{"value":0,"time":1555749297583}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555914706898,"deviceName":"LG_001","items":{"perId":{"value":"比对的人员id","time":1555914706905},"image":{"value":"base64 编码的数据","time":1555914706905},"curTime":{"value":"1555728549839","time":1555914706905},"musicId":{"value":"音乐id","time":1555914706905},"sex":{"value":0,"time":1555914706905},"faceId":{"value":"人脸id","time":1555914706905},"age":{"value":0,"time":1555914706905}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555919912547,"deviceName":"LG_001","items":{"perId":{"value":"比对的人员id","time":1555919912554},"curTime":{"value":"1555728549839","time":1555919912554},"musicId":{"value":"音乐id","time":1555919912554},"sex":{"value":0,"time":1555919912554},"faceId":{"value":"人脸id","time":1555919912554},"age":{"value":0,"time":1555919912554}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555920093923,"deviceName":"LG_001","items":{"perId":{"value":"比对的人员id","time":1555920093932},"curTime":{"value":"1555728549839","time":1555920093932},"musicId":{"value":"音乐id","time":1555920093932},"sex":{"value":0,"time":1555920093932},"faceId":{"value":"人脸id","time":1555920093932},"age":{"value":0,"time":1555920093932}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555920201280,"deviceName":"LG_001","items":{"perId":{"value":"比对的人员id","time":1555920201284},"curTime":{"value":"1555728549839","time":1555920201284},"musicId":{"value":"音乐id","time":1555920201284},"sex":{"value":0,"time":1555920201284},"faceId":{"value":"人脸id","time":1555920201284},"age":{"value":0,"time":1555920201284}}}, 
+{"deviceType":"Light","iotId":"qAOZ5Z8GwLkwtvydOc3c000100","productKey":"a1M0PwYMMNz","gmtCreate":1555920433647,"deviceName":"LG_001","items":{"perId":{"value":"比对的人员id","time":1555920433653},"image":{"value":"/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAALABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDGiVmmjUbArNhi2ePyrTnzEht2YRp5m/y1Vm29uDjnjFUIP9an1rPvJ5VnaISN5brllz1PP+Felm2JdDExs21vb+vQ5cDRVWi3t0NI3AAG1HbPXpxzjufaioNMkaa1LSkOQ5ALAE4orqp4irOCnz2v5L/MzlQhFtcv4n//2Q==","time":1555920433653},"curTime":{"value":"1555728549839","time":1555920433653},"musicId":{"value":"音乐id","time":1555920433653},"sex":{"value":0,"time":1555920433653},"faceId":{"value":"人脸id","time":1555920433653},"age":{"value":0,"time":1555920433653}}}, 
+{"deviceType":"InternetProtocolCamera","identifier":"UpLoadData","iotId":"sh90dAtkXK1z0YslTnED000100","name":"UpLoadData","time":1556177101248,"type":"info","productKey":"a1GJxApe9ri","deviceName":"CAM_001","value":{"curFaceId":"12222"}}, 
+{"deviceType":"InternetProtocolCamera","identifier":"distFace","iotId":"sh90dAtkXK1z0YslTnED000100","name":"识别人脸数据","time":1556419423925,"type":"info","productKey":"a1GJxApe9ri","deviceName":"CAM_001","value":{"glass":0,"curTime":"2019-4-24 9:00:00","nation":"汉","extands":"这里放置图片地址","curFaceId":"181126BT43TNXMNC","sex":1,"libFaceId":"894532BYXY28N0X4","action":"AUTO_EXECUTE","personId":"5cbea3ca2befa56cc114bbaf","hat":0,"age":22,"mask":0}}, 
